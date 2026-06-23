@@ -108,6 +108,14 @@
   .plan-item .ttitle{font-weight:650;font-size:15px}
   .plan-item .tdesc{font-size:13px;color:#666;margin-top:2px}
   .plan-item .teffort{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#eef2f5;color:var(--accent)}
+  .shotpair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  .shotcol .col-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .shotcol.before .col-label{color:var(--fail)}
+  .shotcol.after .col-label{color:var(--pass)}
+  .shotcol img{width:100%;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.07);display:block}
+  .shotcol .cap{font-size:12px;color:#777;margin-top:8px;display:flex;gap:7px;align-items:flex-start}
+  .shotcol.before .cap .mk{color:var(--fail);font-weight:700}
+  .shotcol.after .cap .mk{color:var(--pass);font-weight:700}
   footer{padding:40px 0 70px;text-align:center;color:var(--muted);font-size:13px}
   @media(max-width:720px){.q-grid,.ba,.summary-grid{grid-template-columns:1fr}
     .plan-item{grid-template-columns:auto 1fr}.plan-item .teffort{grid-column:2;justify-self:start}}
@@ -128,7 +136,7 @@
   <div class="wrap">
     <h2>Summary</h2>
     <h3 class="big">A premium store with a hidden cost and an uncertain fit.</h3>
-    <p class="lead">Oura's site looks expensive and converts on aesthetics. But three things quietly cost conversions: the mandatory $5.99/mo membership is buried below the fold while the headline price reads "$349," buyers can't confirm their ring size without ordering a separate sizing kit, and the hero leads with a poetic slogan ("Subtle. Power.") instead of telling a first-time visitor what the product does. One outright bug: on /sizing, the Oura Ring 5 section's button is labeled "Sizing Guide for Oura Ring 4."</p>
+    <p class="lead">Oura's site looks expensive and converts on aesthetics. But three things quietly cost conversions: the mandatory $5.99/mo membership is buried below the fold while the headline price reads "$349," buyers can't confirm their ring size without ordering a separate sizing kit, and the hero leads with a poetic slogan ("Subtle. Power.") instead of telling a first-time visitor what the product does. One accessibility bug: on /sizing, the Oura Ring 5 "Sizing Guide" button carries the accessible label "Sizing Guide for Oura Ring 4."</p>
     <div class="summary-grid">
       <div class="stat"><div class="n">3 / 10</div><div class="l">Heuristics failing</div></div>
       <div class="stat"><div class="n">$72</div><div class="l">Yr-1 cost hidden from headline price</div></div>
@@ -168,7 +176,7 @@
       <tr><td>1. Visibility of system status</td><td><span class="badge b-pass">Pass</span></td><td>Cart count, sale badges, and battery footnotes keep the user informed.</td></tr>
       <tr><td>2. Match system & real world</td><td><span class="badge b-pass">Pass</span></td><td>Plain language ("Sleep Score," "What's Included"), no jargon.</td></tr>
       <tr><td>3. User control & freedom</td><td><span class="badge b-warn">Partial</span></td><td>Easy to browse, but no way to escape the size-uncertainty dead end without ordering.</td></tr>
-      <tr><td>4. Consistency & standards</td><td><span class="badge b-fail">Fail</span></td><td>The /sizing page labels the <b>Oura Ring 5</b> section's button "Sizing Guide for Oura <b>Ring 4</b>." Wrong product name on a CTA.</td></tr>
+      <tr><td>4. Consistency & standards</td><td><span class="badge b-fail">Fail</span></td><td>On /sizing, the <b>Oura Ring 5</b> "Sizing Guide" button's accessible label reads "Sizing Guide for Oura <b>Ring 4</b>." Wrong product name announced to screen readers.</td></tr>
       <tr><td>5. Error prevention</td><td><span class="badge b-fail">Fail</span></td><td>Nothing prevents ordering the wrong size, the costliest mistake in the funnel, before fit is confirmed.</td></tr>
       <tr><td>6. Recognition vs recall</td><td><span class="badge b-pass">Pass</span></td><td>Finishes, specs, and features are shown visually, not described from memory.</td></tr>
       <tr><td>7. Flexibility & efficiency</td><td><span class="badge b-warn">Partial</span></td><td>Duplicate "Explore" and "Shop" buttons on the same card add choice without speeding anyone up.</td></tr>
@@ -198,43 +206,23 @@
     <h2>Before / After</h2>
     <h3 class="big">The three highest-impact fixes</h3>
 
+    <p class="lead" style="margin-bottom:6px">"Before" shots are the live ouraring.com pages captured June 2026. "After" shots are the proposed fixes, rendered as working mockups.</p>
+
     <!-- ISSUE 1 -->
     <div class="issue">
       <div class="issue-head"><span class="ix">Issue 1</span><h4>Hidden total cost</h4></div>
-      <p class="why"><b>Why it matters:</b> Violates Help &amp; Documentation (H10) and erodes trust (Q6). The headline reads "$349," but the membership at $5.99/mo is required to get the insights the whole product promises. Year-one reality is ~$421, disclosed only in fine print far below the buy button. Buyers discover the recurring charge after committing, which drives refunds and 1-star "hidden fee" reviews.</p>
+      <p class="why"><b>Why it matters:</b> Violates Help &amp; Documentation (H10) and erodes trust (Q6). The headline reads "$349," but the membership at $5.99/mo is required to get the insights the whole product promises. Year-one reality is ~$415, disclosed only in fine print far below the buy button. Buyers discover the recurring charge after committing, which drives refunds and 1-star "hidden fee" reviews.</p>
       <span class="impact">Expected impact: fewer refunds, higher membership retention, more trust at checkout.</span>
-      <div class="ba">
-        <div class="before col">
-          <div class="col-label"><span class="dot"></span>Before</div>
-          <div class="device">
-            <div class="o-nav"><span class="logo">ŌURA</span><span class="links"><span>Shop</span><span>Features</span><span>Cart</span></span></div>
-            <div class="o-body">
-              <div class="o-prod">Oura Ring 4 · On Sale</div>
-              <div class="o-h">Our most personal smart ring ever</div>
-              <div class="o-p">A new era of unparalleled accuracy and comfort.</div>
-              <div class="price-row"><span class="price">From $349</span><span class="price-sub">FSA / HSA eligible</span></div>
-              <a class="o-cta" href="#">Choose Your Oura Ring 4</a>
-              <div class="ann"><span class="mk">!</span><span>Membership ($5.99/mo, required for insights) is mentioned only in fine print far below this CTA.</span></div>
-            </div>
-          </div>
+      <div class="shotpair">
+        <div class="shotcol before">
+          <div class="col-label"><span class="dot"></span>Before — live site</div>
+          <img src="shots/before_product.png" alt="Oura Ring 4 product page, current">
+          <div class="cap"><span class="mk">!</span><span>"From $349" is the only price near the CTA. The required membership is disclosed far below the fold.</span></div>
         </div>
-        <div class="after col">
-          <div class="col-label"><span class="dot"></span>After</div>
-          <div class="device">
-            <div class="o-nav"><span class="logo">ŌURA</span><span class="links"><span>Shop</span><span>Features</span><span>Cart</span></span></div>
-            <div class="o-body">
-              <div class="o-prod">Oura Ring 4 · On Sale</div>
-              <div class="o-h">Our most personal smart ring ever</div>
-              <div class="cost-card">
-                <div class="cost-line"><span>Oura Ring 4</span><span>$349</span></div>
-                <div class="cost-line"><span>Membership <span class="tag">first month free</span></span><span>$5.99/mo</span></div>
-                <div class="cost-line total"><span>Your first year</span><span>≈ $415</span></div>
-              </div>
-              <a class="o-cta" href="#">Choose your ring</a> &nbsp;
-              <span class="pill">Cancel membership anytime</span>
-              <div class="ann"><span class="mk">✓</span><span>True year-one cost shown at the buy button. No surprise on the credit card statement.</span></div>
-            </div>
-          </div>
+        <div class="shotcol after">
+          <div class="col-label"><span class="dot"></span>After — proposed</div>
+          <img src="shots/after_product.png" alt="Oura Ring 4 product page with cost breakdown">
+          <div class="cap"><span class="mk">✓</span><span>A cost-breakdown card shows the ~$415 year-one total at the buy button, with "cancel anytime."</span></div>
         </div>
       </div>
     </div>
@@ -242,43 +230,18 @@
     <!-- ISSUE 2 -->
     <div class="issue">
       <div class="issue-head"><span class="ix">Issue 2</span><h4>The size dead end</h4></div>
-      <p class="why"><b>Why it matters:</b> Violates Error Prevention (H5) and User Control (H3). A ring must fit. Today a buyer reaches the size step with no way to know their size, the page just points them to "Confirm Your Size" after they already own one. Fear of buying the wrong size and dealing with returns is a silent conversion killer. The current /sizing page also carries a real bug: the Ring 5 section's button is labeled "Sizing Guide for Oura Ring 4."</p>
+      <p class="why"><b>Why it matters:</b> Violates Error Prevention (H5) and User Control (H3). A ring must fit, but a buyer reaches the size step with no way to know their size on the spot. Fear of buying the wrong size and dealing with returns is a silent conversion killer. The page also carries an accessibility bug: in the Oura Ring 5 section the "Sizing Guide" button's accessible label (what a screen reader announces) reads "Sizing Guide for Oura Ring 4," the wrong product.</p>
       <span class="impact">Expected impact: higher add-to-cart rate, fewer wrong-size returns.</span>
-      <div class="ba">
-        <div class="before col">
-          <div class="col-label"><span class="dot"></span>Before</div>
-          <div class="device">
-            <div class="o-nav"><span class="logo">ŌURA</span><span class="links"><span>Sizing</span></span></div>
-            <div class="o-body">
-              <div class="o-prod">Sizing</div>
-              <div class="o-h">Find your perfect fit</div>
-              <div class="size-card">
-                <div class="st">Oura Ring 5</div>
-                <div class="sd">Slimmest, lightest ring yet, sizes 6–13. Fits differently than Ring 4.</div>
-                <span class="bad-btn err">Sizing Guide for Oura Ring 4</span>
-              </div>
-              <div class="ann"><span class="mk">!</span><span>Wrong product name on the Ring 5 button. And there's no way to actually determine your size here without ordering a kit.</span></div>
-            </div>
-          </div>
+      <div class="shotpair">
+        <div class="shotcol before">
+          <div class="col-label"><span class="dot"></span>Before — live site</div>
+          <img src="shots/before_sizing.png" alt="Oura sizing page, current">
+          <div class="cap"><span class="mk">!</span><span>"Sizing Guide" leads to instructions, not an on-the-spot answer; the Ring 5 button's accessible label names Ring 4.</span></div>
         </div>
-        <div class="after col">
-          <div class="col-label"><span class="dot"></span>After</div>
-          <div class="device">
-            <div class="o-nav"><span class="logo">ŌURA</span><span class="links"><span>Sizing</span></span></div>
-            <div class="o-body">
-              <div class="o-prod">Sizing</div>
-              <div class="o-h">Find your perfect fit</div>
-              <div class="finder">
-                <div class="em">💍</div>
-                <div style="font-size:13px;color:#555;margin-top:6px">Drag to match a ring you own, or order a free sizing kit.</div>
-                <input type="range" min="6" max="13" value="9">
-                <div style="font-weight:700">Estimated size: 9</div>
-              </div>
-              <a class="o-cta" href="#">Send me a free sizing kit</a> &nbsp;
-              <a class="o-cta ghost" href="#">Print sizing guide</a>
-              <div class="ann"><span class="mk">✓</span><span>Correct labels, an on-the-spot estimate, a free kit, and a "30-day fit guarantee" note to remove return fear.</span></div>
-            </div>
-          </div>
+        <div class="shotcol after">
+          <div class="col-label"><span class="dot"></span>After — proposed</div>
+          <img src="shots/after_sizing.png" alt="Oura sizing page with inline finder">
+          <div class="cap"><span class="mk">✓</span><span>Inline size finder, free sizing kit, printable guide, and a 30-day fit guarantee to remove return fear.</span></div>
         </div>
       </div>
     </div>
@@ -286,38 +249,18 @@
     <!-- ISSUE 3 -->
     <div class="issue">
       <div class="issue-head"><span class="ix">Issue 3</span><h4>A hero that hides the point</h4></div>
-      <p class="why"><b>Why it matters:</b> Violates Match to Real World (H2) and weak on first impression (Q1, Q12). "Subtle. Power." is a slogan, not a value proposition. A first-time visitor who arrived from a podcast mention should learn what the product does in one second. Instead the value prop ("collect deeply personal health metrics") sits below the fold, and a full-width cookie wall covers the hero on load, so the first interaction is a privacy dialog, not the product.</p>
+      <p class="why"><b>Why it matters:</b> Violates Match to Real World (H2) and weak on first impression (Q1, Q12). "Subtle. Power." is a slogan, not a value proposition. A first-time visitor who arrived from a podcast mention should learn what the product does in one second. Instead the value prop ("collect deeply personal health metrics") sits below the fold, and a full-width cookie banner sits across the screen on load.</p>
       <span class="impact">Expected impact: lower bounce, faster time-to-wow, clearer comparison against Whoop / Apple Watch.</span>
-      <div class="ba">
-        <div class="before col">
-          <div class="col-label"><span class="dot"></span>Before</div>
-          <div class="device">
-            <div class="o-nav"><span class="logo">ŌURA</span><span class="links"><span>Shop</span><span>Features</span><span>Cart</span></span></div>
-            <div class="o-body" style="text-align:center">
-              <div class="o-ring" style="margin:8px auto 16px"></div>
-              <div class="o-h" style="font-size:30px">Subtle. Power.</div>
-              <div class="o-p">The world's smallest smart ring is here.</div>
-              <div class="ann" style="justify-content:center;text-align:left"><span class="mk">!</span><span>No primary CTA in the hero. Slogan says nothing about what it does or why you'd buy.</span></div>
-            </div>
-            <div class="cookie">
-              Your Privacy Is Important — we use cookies to enhance your experience.
-              <div class="cbtns"><span class="cb">Accept All</span><span class="cb out">Necessary</span><span class="cb out">Manage</span></div>
-            </div>
-          </div>
+      <div class="shotpair">
+        <div class="shotcol before">
+          <div class="col-label"><span class="dot"></span>Before — live site</div>
+          <img src="shots/before_home.png" alt="Oura homepage, current">
+          <div class="cap"><span class="mk">!</span><span>"Subtle. Power." says nothing about what it does, and there's no primary CTA in the hero.</span></div>
         </div>
-        <div class="after col">
-          <div class="col-label"><span class="dot"></span>After</div>
-          <div class="device">
-            <div class="o-nav"><span class="logo">ŌURA</span><span class="links"><span>Shop</span><span>Features</span><span>Cart</span></span></div>
-            <div class="o-body" style="text-align:center">
-              <div class="o-ring" style="margin:8px auto 16px"></div>
-              <div class="o-h" style="font-size:27px">Know your body. Sleep, recovery &amp; stress, on one finger.</div>
-              <div class="o-p">The world's smallest smart ring. 50+ health metrics, no screen, 8-day battery.</div>
-              <a class="o-cta" href="#">Shop Oura Ring — from $349</a>
-              <div style="margin-top:10px"><span class="pill">★ Best Inventions 2025 · TIME</span></div>
-              <div class="ann" style="justify-content:center;text-align:left"><span class="mk">✓</span><span>Outcome-led headline, one clear CTA, social proof above the fold. Cookie banner deferred to a slim bottom bar.</span></div>
-            </div>
-          </div>
+        <div class="shotcol after">
+          <div class="col-label"><span class="dot"></span>After — proposed</div>
+          <img src="shots/after_home.png" alt="Oura homepage with outcome-led hero">
+          <div class="cap"><span class="mk">✓</span><span>Outcome-led headline, one clear CTA, social proof above the fold, cookie consent demoted to a slim bottom bar.</span></div>
         </div>
       </div>
     </div>
@@ -327,7 +270,7 @@
 
 <footer>
   <div class="wrap">
-    UX design review of ouraring.com · Nielsen Norman heuristics · Before/after fixes rebuilt in HTML<br>
+    UX design review of ouraring.com · Nielsen Norman heuristics · Before = live site, After = proposed fixes<br>
     Generated June 2026 · For evaluation purposes; not affiliated with Oura.
   </div>
 </footer>
